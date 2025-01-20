@@ -7811,24 +7811,6 @@ function FastAttackConnectorFunction()
             end
         end
     end)
-    spawn(function()
-while task.wait() do
-    local AttackLists = {}
-    local CharacterAndEnemies = {workspace.Characters, workspace.Enemies}
-    for _, Group in pairs(CharacterAndEnemies) do
-        for _, v in pairs(Group:GetChildren()) do
-            if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Head") then
-                if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 55 then
-                    table.insert(AttackLists, v:FindFirstChild("Head"))
-                end
-            end
-        end
-    end
-    for _, v in pairs(AttackLists) do
-        game:GetService("ReplicatedStorage").Modules.Net:FindFirstChild("RE/RegisterAttack"):FireServer(0)
-        game:GetService("ReplicatedStorage").Modules.Net:FindFirstChild("RE/RegisterHit"):FireServer(v)
-    end
-end)
     return ReturnFunctions
 end
 return FastAttackConnectorFunction()

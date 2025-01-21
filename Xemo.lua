@@ -33,12 +33,12 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
 local Window = Fluent:CreateWindow({
-    Title = "Mbm Hub 3",
+    Title = "Xemo Hub",
     SubTitle = "- join my discord server : https://discord.gg/ZRapJfwPmK",
     TabWidth = 145,
-    Size = UDim2.fromOffset(515, 350),
+    Size = UDim2.fromOffset(455, 350),
     Acrylic = false,
-    Theme = "Gray",
+    Theme = "Amethyst",
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
@@ -1284,15 +1284,6 @@ if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn
 end
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-
--- Mbm Hub R - []
-loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/firarst/main/anti-cheat.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/firarst/main/anti-hack.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/firarst/main/anti-exploit.lua"))()
--- Mbm Hub C - []
-
------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 --Function
 local listfastattack = {'0.25','0.2','0.15','0.1','0.05','0.02','0.015','0.01','0'}
 

@@ -94,14 +94,8 @@ function AntiBan()
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
-print("made by minh & dakii")
-    print("mbm x hub")
-    print("join my discord server : https://dsc.gg/m1m")
-    print("boing boing")
-    print("ty for using - have fun")
-    print("sk (on discord : @player.81 & @dakii_90790)")
-    print("wait ,.,")
-    print("LCTSV - .,.")  
+print("Made bu This Is HngYThw & Bui Now Quy")
+print("Cat Hub Remake")
 
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 	game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -122,8 +116,8 @@ Third_Sea = true
 end
 
 Fluent:Notify({
-    Title = "Mbm Hub",
-    Content = "Script load..",
+    Title = "Cat Hub",
+    Content = "Script load",
     Duration = 5
 })
 
@@ -2751,8 +2745,8 @@ spawn(function()
 	while wait(0.4) do
 		pcall(function()
 			if _G.FastAttackFaiFao then
-				repeat wait(_G.Fast_Delay)
-					AttackNoCD()
+				repeat wait(0)
+
 				until not _G.FastAttackFaiFao
 			end
 		end)
@@ -3191,7 +3185,6 @@ spawn(function()
     end
 end)
 
---[[
 local ToggleDashNoCD = Tabs.Player:AddToggle("ToggleDashNoCD", {Title = "Dash No Cooldown", Default = false })
 ToggleDashNoCD:OnChanged(function(Value)
     _G.DashNoCd = Value
@@ -4709,7 +4702,7 @@ Tabs.Misc:AddButton({
 
 Fluent:Notify({
     Title = "@"..game.Players.LocalPlayer.Name.."",
-    Content = "have fun",
+    Content = "REMAKE",
     Duration = 10
 })
 
@@ -4718,8 +4711,8 @@ if Third_Sea then
     local Mastery = Tabs.Hop:AddSection("can join mirage / full moon server\n with code in my discord server")
     end
 --]]-- fluent
-InterfaceManager:SetFolder("MBM_HUB")
-SaveManager:SetFolder("MBM_HUB")
+InterfaceManager:SetFolder("CAT_HUB")
+SaveManager:SetFolder("CAT_HUB")
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 SaveManager:IgnoreThemeSettings()
@@ -4730,7 +4723,7 @@ Window:SelectTab(1)
 SaveManager:LoadAutoloadConfig()
 --[[
     end
-    delfolder("MBM_HUB")
+    delfolder("CAT_HUB")
 --]]
 if Third_Sea then
 
@@ -5187,19 +5180,6 @@ local StatusBone = Tabs.Info:AddParagraph({
           end
       end)
     end)
-    --]]
-    local ObservationRange = Tabs.Info:AddParagraph({
-        Title = "Observation Level (điểm haki quan sát)",
-        Content = ""
-    })
-    
-    spawn(function()
-        while wait() do
-            pcall(function()
-                ObservationRange:SetDesc("Observation Range Level : "..math.floor(game:GetService("Players").LocalPlayer.VisionRadius.Value))
-            end)
-        end
-    end)
 
     local Timmessss = Tabs.Info:AddParagraph({
         Title = "Time",
@@ -5304,7 +5284,7 @@ if Second_Sea then
         end
     end)
 end
---[[
+
 local ToggleTweenFrozenDimension = Tabs.Seaev:AddToggle("ToggleTweenFrozenDimension", {Title = "Tp Frozen Dimension", Description = "bay đến đảo levi", Default = false })
 ToggleTweenFrozenDimension:OnChanged(function(Value)
     _G.AutoFrozenDimension = Value
@@ -5320,7 +5300,8 @@ spawn(function()
             end
         end
     end)
-end)]]
+end)
+
 local Togglelockmoon = Tabs.Seaev:AddToggle("Togglelockmoon", {Title = "Look Moon and Use Race Skill",Description = "Nhìn Trăng + Bật Tộc", Default = false })
 Togglelockmoon:OnChanged(function(Value)
     _G.AutoLockMoon = Value

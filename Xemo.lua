@@ -1165,23 +1165,6 @@ end
 local CombatController = require(game:GetService("ReplicatedStorage").Controllers.CombatController)
 
 FastAttack = true
-Main_Setting:addToggle('Fast Attack (Melee and Sword)', FastAttack, function(Value)
-    FastAttack = Value
-end)
-spawn(function()
-    while task.wait() do
-        if FastAttack then
-            pcall(function()
-                local plr = game:GetService("Players").LocalPlayer
-                local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
-                repeat task.wait()
-                    FastAttacked()
-                    CameraShakerR:Stop()
-                until not FastAttack
-            end)
-        end
-    end
-end)
 
  -------------------------------------------------------------------------------------------------
 

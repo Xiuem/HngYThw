@@ -2154,7 +2154,7 @@ end)
     Title = "Xemo Hub" ,
     SubTitle = "[New Update]",
     TabWidth = 145,
-    Size = UDim2.fromOffset(440, 320),
+    Size = UDim2.fromOffset(440, 350),
     Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Amethyst",
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
@@ -2164,7 +2164,7 @@ end)
 local Tabs = {
 	Sh = Window:AddTab({ Title = "Shop", Icon = "" }),
 	Settings = Window:AddTab({ Title = "Setting Farm", Icon = "" }),
-    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
     Ms = Window:AddTab({ Title = "Misc", Icon = "" }),    
     Mt = Window:AddTab({ Title = "Material And Boss", Icon = "" }),    
     De = Window:AddTab({ Title = "Fruit And Raid", Icon = "" }),    
@@ -2225,7 +2225,7 @@ function RedeemCode(value)
     })
 
     Tabs.Sh:AddButton({
-        Title = "Ghould",
+        Title = "Buy Ghould Race",
         Description = "",
         Callback = function()            
 local args = {[1] = "Ectoplasm", [2] = "BuyCheck", [3] = 4}
@@ -2236,7 +2236,7 @@ local args = {[1] = "Ectoplasm", [2] = "BuyCheck", [3] = 4}
     })
     
     Tabs.Sh:AddButton({
-        Title = "Cyborg",
+        Title = "Buy Cyborg Race",
         Description = "",
         Callback = function()            
 local args = {[1] = "CyborgTrainer", [2] = "Buy"}
@@ -2254,7 +2254,7 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
     })
     
     Tabs.Sh:AddButton({
-        Title = "Refund Stast",
+        Title = "Refund Stats",
         Description = "",
         Callback = function()            
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
@@ -2262,6 +2262,69 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
         end
     })
     
+  local shoppinglist = {'electro','fishman karate','dragon claw','superhuman','deathstep','dragontalon','sharkman karate','electric claw','godhuman','sanguine art'}
+
+    local shopaholic = Tabs.Sh:AddDropdown("shopaholic", {
+        Title = "Select Melee",
+        Description = "",
+        Values = shoppinglist,
+        Multi = false,
+        Default = 1,
+    })
+    shopaholic:SetValue("geppo")
+    shopaholic:OnChanged(function(Value)
+    _G.shopping = Value
+	if _G.shopping == "geppo" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
+    elseif _G.shopping == "buso" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
+	elseif _G.shopping == "soru" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
+    elseif _G.shopping == "ken" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
+    elseif _G.shopping == "black leg" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
+    elseif _G.shopping == "electro" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
+    elseif _G.shopping == "fishman karate" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
+    elseif _G.shopping == "dragon claw" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
+	elseif _G.shopping == "superhuman" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+    elseif _G.shopping == "deathstep" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+    elseif _G.shopping == "dragontalon" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+    elseif _G.shopping == "sharkman karate" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+	elseif _G.shopping == "electric claw" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+    elseif _G.shopping == "godhuman" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+    elseif _G.shopping == "sanguine art" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt", true)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+	end
+end)
+
     local Dropdown = Tabs.Settings:AddDropdown("Dropdown", {
         Title = "Chọn Vũ Khí",
         Values = {"Melee","Sword","Fruit","Gun"},

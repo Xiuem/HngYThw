@@ -2151,12 +2151,12 @@ spawn(function()
 end)
 
     local Window = Fluent:CreateWindow({
-    Title = "Xester Hub" ,
-    SubTitle = "By HuySimp",
+    Title = "Xemo Hub" ,
+    SubTitle = "[New Update]",
     TabWidth = 120,
-    Size = UDim2.fromOffset(480, 320),
+    Size = UDim2.fromOffset(450, 350),
     Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Darker",
+    Theme = "Amethyst",
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
 
@@ -2179,8 +2179,8 @@ local Options = Fluent.Options
 
 do
     Fluent:Notify({
-        Title = "Xester Hub",
-        Content = "Thank for use",
+        Title = "@"..game.Players.LocalPlayer.Name.."",
+        Content = "Wait Script Loader",
         SubContent = "", -- Optional
         Duration = 5 -- Set to nil to make the notification not disappear
     })

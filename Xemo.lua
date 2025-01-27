@@ -2165,10 +2165,10 @@ local Tabs = {
 	Sh = Window:AddTab({ Title = "Shop", Icon = "" }),
 	Settings = Window:AddTab({ Title = "Setting Farm", Icon = "" }),
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
-    Ms = Window:AddTab({ Title = "Misc", Icon = "" }),    
-    Mt = Window:AddTab({ Title = "Material And Boss", Icon = "" }),    
+    Re = Window:AddTab({ Title = "Reduce", Icon = "" }),
+    St = Window:AddTab({ Title = "Status", Icon = "" }),    
     De = Window:AddTab({ Title = "Fruit And Raid", Icon = "" }),    
-    St = Window:AddTab({ Title = "Status Sever", Icon = "" }),    
+    Ms = Window:AddTab({ Title = "Misc", Icon = "" }),    
     Lc = Window:AddTab({ Title = "Local Player", Icon = "" }),   
     RC = Window:AddTab({ Title = "Race V4", Icon = "" }),   
     Se = Window:AddTab({ Title = "Sea Event", Icon = "" }),   
@@ -2323,10 +2323,101 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt", true)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
 	end
-end)
+end) 
+
+  local shoppinglist = {'geppo','buso','soru','ken'}
+
+    local shopaholic = Tabs.S:AddDropdown("shopaholic", {
+        Title = "Select Abilities",
+        Description = "",
+        Values = shoppinglist,
+        Multi = false,
+        Default = 1,
+    })
+    shopaholic:SetValue("geppo")
+    shopaholic:OnChanged(function(Value)
+    _G.shopping = Value
+	if _G.shopping == "geppo" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
+    elseif _G.shopping == "buso" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
+	elseif _G.shopping == "soru" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
+    elseif _G.shopping == "ken" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
+
+local shoppinglistswor = {'Pole v2','Soul Cane','Bisento','Dual-Headed Blade','dual katana','pipe','cutlass','Bizarre Rifle','kabucha','cannon','refined flintlock','slingshot','triple katana','Black Cape','Swordsman Hat','Tomoe Ring','flintlock','musket','katana'}
+
+local shopaholicsss = Tabs.Sh:AddDropdown("shopaholicsss", {
+    Title = "Select Sword & Accessories & Gun",
+    Description = "",
+    Values = shoppinglistswor,
+    Multi = false,
+    Default = 1,
+})
+shopaholicsss:SetValue("Pole v2")
+shopaholicsss:OnChanged(function(Value)
+_G.shopping = Value
+if _G.shopping == "Pole v2" then
+    wait(0.5)
+    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("ThunderGodTalk")
+elseif _G.shopping == "Soul Cane" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Soul Cane")
+elseif _G.shopping == "Bisento" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Bisento")
+elseif _G.shopping == "Dual-Headed Blade" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Dual-Headed Blade")
+elseif _G.shopping == "pipe" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Pipe")
+elseif _G.shopping == "triple katana" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Triple Katana")
+elseif _G.shopping == "dual katana" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Duel Katana")
+elseif _G.shopping == "katana" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Katana")
+elseif _G.shopping == "cutlass" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Cutlass")
+elseif _G.shopping == "Bizarre Rifle" then
+    wait(0.5)
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Ectoplasm", "Ectoplasm", "1")
+elseif _G.shopping == "kabucha" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Slingshot","1")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Slingshot","2")
+elseif _G.shopping == "cannon" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Flintlock")
+elseif _G.shopping == "musket" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Musket")
+elseif _G.shopping == "slingshot" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Slingshot")
+elseif _G.shopping == "Tomoe Ring" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Tomoe Ring")
+elseif _G.shopping == "Swordsman Hat" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Swordsman Hat")
+elseif _G.shopping == "Black Cape" then
+    wait(0.5)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Black Cape")
+end
 
     local Dropdown = Tabs.Settings:AddDropdown("Dropdown", {
-        Title = "Chọn Vũ Khí",
+        Title = "Select Weapon",
         Values = {"Melee","Sword","Fruit","Gun"},
         Multi = false,
         Default = 1,
@@ -2421,13 +2512,13 @@ spawn(function()
     end
 end)
 
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Bypass Teleport", Default = true })
+    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Bypass Teleport", Default = false })
 
     Toggle:OnChanged(function(Value)
         BypassTP = Value		
     end)
     
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Bật Haki", Default = false })
+    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Auto Haki", Default = true })
 
     Toggle:OnChanged(function(Value)
         _G.AUTOHAKI = Value
@@ -2446,52 +2537,11 @@ end)
     end
 end)
 
-local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Bật Haki Quan Sát", Default = false })
-
-    Toggle:OnChanged(function(Value)
-        _G.AUTOKen = Value
-    end)
-    
-    spawn(function()
-        while wait() do
-            pcall(function()
-                if _G.AUTOKen then
-                    repeat task.wait()
-                        if not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
-                            game:GetService('VirtualUser'):CaptureController()
-                            game:GetService('VirtualUser'):SetKeyDown('0x65')
-                            wait(2)
-                            game:GetService('VirtualUser'):SetKeyUp('0x65')
-                        end
-                    until game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") or not _G.AUTOKen
-                end
-            end)
-        end
-    end)    
-       
-   local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Đánh Nhanh + Tự Động Click", Default = true })
+   local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Auto Click", Default = true })
 
     Toggle:OnChanged(function(Value)
       UFFF = Value
     end)
-      
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Đánh Quái Gần", Default = false })
-
-    Toggle:OnChanged(function(Value)
-        _G.FastAttack2 = Value
-    end)
-    
-    spawn(function()
-    while wait(.1) do
-        if _G.FastAttack2 then
-            pcall(function()
-                repeat task.wait(_G.FastAttackDelay)
-                    AttackNoCD()
-                until not _G.FastAttack2
-            end)
-        end
-    end
-end)
 
 local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Click 0s", Default = false })
 
@@ -2512,7 +2562,7 @@ local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Click 0s", Default 
 end)
 
 local Dropdown = Tabs.Settings:AddDropdown("Dropdown", {
-        Title = "Mức Độ Gom Quái",
+        Title = "Bring Mode",
         Values = {"Low", "Normal", "Super Bring"},
         Multi = false,
         Default = 1,
@@ -2541,7 +2591,7 @@ spawn(function()
     end
 end)
     
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Loại Bỏ Tất Cả Thông Báo", Default = false })
+    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Remove Notify", Default = false })
 
     Toggle:OnChanged(function(Value)
         RemoveNotify = Value
@@ -2557,7 +2607,7 @@ end)
         end
     end)
     
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Loại Bỏ Tất Cả Chữ Khi Đánh Quái", Default = false })
+    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Remove Text", Default = false })
 
     Toggle:OnChanged(function(Value)
         Removetext = Value
@@ -2573,7 +2623,7 @@ end)
         end
         end)
     
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Gom Quái", Default = true })
+    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Bring Mobs", Default = true })
 
     Toggle:OnChanged(function(Mag)
         _G.BringMonster = Mag
@@ -2910,7 +2960,7 @@ task.spawn(function()
 	end
     end)
     
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Loại Bỏ Tất Cả Hiệu Ứng", Default = false })
+    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Remove Effect", Default = true })
 
     Toggle:OnChanged(function(Value)
         _G.Remove_Effect = Value		
@@ -2928,7 +2978,7 @@ task.spawn(function()
     end)
     end)
     
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Tự Động Bật Tộc V4", Default = false })
+    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Turn On V4", Default = false })
 
     Toggle:OnChanged(function(Value)
         AutoAwakeningRace = Value
@@ -3024,11 +3074,11 @@ local Slider = Tabs.Settings:AddSlider("Slider", {
     })
     
     Tabs.Main:AddParagraph({
-        Title = "Main Farm",
-        Content = "GENARAL FARM"
+        Title = "",
+        Content = "Main Fram"
     })
 
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Farm Cấp Độ", Default = false })
+local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Level", Default = false })
 
     Toggle:OnChanged(function(Value)
         _G.AutoFarm = Value
@@ -3097,6 +3147,72 @@ local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Farm Cấp Độ", Defa
         end
     end)
     
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Bone", Default = false })
+
+    Toggle:OnChanged(function(Value)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+		_G.Auto_Bone = Value
+		StopTween(_G.Auto_Bone)
+		end)
+		
+    spawn(function()
+        while wait() do 
+            local boneframe = CFrame.new(-9508.5673828125, 142.1398468017578, 5737.3603515625)
+            if _G.Auto_Bone and World3 then
+            pcall(function()
+                    if BypassTP then
+                        if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
+                            BTP(boneframe)
+                            wait(.1)
+                            for i = 1, 8 do
+                                game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(boneframe)
+			                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")	
+                                wait(.1)		
+                            end
+                        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude < 2000 then
+                            TP1(boneframe)
+                        end
+                    else
+                        TP1(boneframe)
+                    end
+                    if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.Head.CanCollide = false 
+                                    MonFarm = v.Name                
+                                        PosMon = v.HumanoidRootPart.CFrame
+                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
+                                        sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
+                                    until not _G.Auto_Bone or not v.Parent or v.Humanoid.Health <= 0
+                                end
+                            end
+                        end
+                    else
+                        StartMagnetBoneMon = false
+    					topos(CFrame.new(-9506.234375, 172.130615234375, 6117.0771484375))
+                        for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
+                            if v.Name == "Reborn Skeleton" then
+                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                            elseif v.Name == "Living Zombie" then
+                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                            elseif v.Name == "Demonic Soul" then
+                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                            elseif v.Name == "Posessed Mummy" then
+                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                            end
+                        end
+                    end
+                    end)
+            end
+        end
+    end)    
+
 local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Farm Quái Gần Nhất", Default = false })
 
     Toggle:OnChanged(function(Value)
@@ -3547,75 +3663,7 @@ spawn(function()
         end
     end)
 end)
-    
-    Tabs.Main:AddSection("Xương")
-    
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Farm Xương", Default = false })
 
-    Toggle:OnChanged(function(Value)
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-		_G.Auto_Bone = Value
-		StopTween(_G.Auto_Bone)
-		end)
-		
-    spawn(function()
-        while wait() do 
-            local boneframe = CFrame.new(-9508.5673828125, 142.1398468017578, 5737.3603515625)
-            if _G.Auto_Bone and World3 then
-            pcall(function()
-                    if BypassTP then
-                        if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude > 2000 then
-                            BTP(boneframe)
-                            wait(.1)
-                            for i = 1, 8 do
-                                game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(boneframe)
-			                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")	
-                                wait(.1)		
-                            end
-                        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - boneframe.Position).Magnitude < 2000 then
-                            TP1(boneframe)
-                        end
-                    else
-                        TP1(boneframe)
-                    end
-                    if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        AutoHaki()
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 0
-                                        v.Head.CanCollide = false 
-                                    MonFarm = v.Name                
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        topos(v.HumanoidRootPart.CFrame * CFrame.new(PosX,PosY,PosZ))
-                                        sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
-                                    until not _G.Auto_Bone or not v.Parent or v.Humanoid.Health <= 0
-                                end
-                            end
-                        end
-                    else
-                        StartMagnetBoneMon = false
-    					topos(CFrame.new(-9506.234375, 172.130615234375, 6117.0771484375))
-                        for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
-                            if v.Name == "Reborn Skeleton" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
-                            elseif v.Name == "Living Zombie" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
-                            elseif v.Name == "Demonic Soul" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
-                            elseif v.Name == "Posessed Mummy" then
-                                topos(v.HumanoidRootPart.CFrame * CFrame.new(2,20,2))
-                            end
-                        end
-                    end
-                    end)
-            end
-        end
-    end)    
-    
     local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Random Xương", Default = false })
 
     Toggle:OnChanged(function(Value)

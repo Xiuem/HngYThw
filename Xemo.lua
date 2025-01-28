@@ -765,11 +765,11 @@ Fluent:Notify({
 
 local Tabs = {
     G = Window:AddTab({ Title = "Main", Icon = "home" }),
-    SF = Window:AddTab({ Title = "Settings Fram", Icon = "atom" })
+    SF = Window:AddTab({ Title = "Settings Fram", Icon = "" })
     O = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
     ST = Window:AddTab({ Title = "Status", Icon = "bar-chart-4" }),
     IQ = Window:AddTab({ Title = "Item & Quest", Icon = "swords" }),
-    LC = Window:AddTab({ Title = "Local Player", Icon = "user" }),
+    LC = Window:AddTab({ Title = "Local Player", Icon = "atom" }),
     S = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 

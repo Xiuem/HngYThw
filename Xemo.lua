@@ -744,9 +744,9 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 local Window = Fluent:CreateWindow({
     Title = "Xemo Hub ",
-    SubTitle = "1.0",
+    SubTitle = "Remake",
     TabWidth = 145,
-    Size = UDim2.fromOffset(450, 300),
+    Size = UDim2.fromOffset(420, 350),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Darker",
     MinimizeKey = Enum.KeyCode.End -- Used when theres no MinimizeKeybind
@@ -766,12 +766,9 @@ Fluent:Notify({
 local Tabs = {
     G = Window:AddTab({ Title = "Main", Icon = "home" }),
     O = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
+    ST = Window:AddTab({ Title = "Status", Icon = "bar-chart-4" }),
     IQ = Window:AddTab({ Title = "Item & Quest", Icon = "swords" }),
     LC = Window:AddTab({ Title = "Local Player", Icon = "user" }),
-    ST = Window:AddTab({ Title = "Status", Icon = "bar-chart-4" }),
-    ST = Window:AddTab({ Title = "Misc", Icon = "apple" }),
-    UR = Window:AddTab({ Title = "Upgrate Race", Icon = "person-standing" }),
-    SE = Window:AddTab({ Title = "Sea Event", Icon = "waves" }),
     S = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -814,11 +811,6 @@ task.spawn(function()
         end)
     end
 end)
-
-Tabs.G:AddParagraph({
-        Title = "",
-        Content  = "Farmming Settings"
-    })
 
 local Stats = Tabs.G:AddDropdown("Stats", {
     Title = "Select Stats",
@@ -1254,106 +1246,96 @@ Options.AutoPirates:SetValue(false)
 
 -- Shop
 
-Tabs.O:AddParagraph({
-        Title = "",
-        Content  = "Fighting Style"
-    })
+       local x2Code = {
+        "KITTGAMING",
+        "ENYU_IS_PRO",
+        "FUDD10",
+        "BIGNEWS",
+        "THEGREATACE",
+        "SUB2GAMERROBOT_EXP1",
+        "STRAWHATMAIME",
+        "SUB2OFFICIALNOOBIE",
+        "SUB2NOOBMASTER123",
+        "SUB2DAIGROCK",
+        "AXIORE",
+        "TANTAIGAMIMG",
+        "STRAWHATMAINE",
+        "JCWK",
+        "FUDD10_V2",
+        "SUB2FER999",
+        "MAGICBIS",
+        "TY_FOR_WATCHING",
+        "STARCODEHEO",
+        "STAFFBATTLE",
+        "ADMIN_STRENGTH",
+        "DRAGONABUSE",
+    }
 
 Tabs.O:AddButton({
-        Title = "Buy Sanguine Art",
+        Title = "Redeem All Code",
         Description = "",
         Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+function RedeemCode(value)
+            game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(value)
+        end
+        for i,v in pairs(x2Code) do
+            RedeemCode(v)
+        end
         end
     })
-    
-Tabs.O:AddButton({
-        Title = "Buy God Human",
+   
+   local shoppinglist = {'electro','fishman karate','dragon claw','superhuman','deathstep','dragontalon','sharkman karate','electric claw','godhuman','sanguine art'}
+
+    local shopaholic = Tabs.O:AddDropdown("shopaholic", {
+        Title = "Select Melee",
         Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
-        end
+        Values = shoppinglist,
+        Multi = false,
+        Default = 1,
     })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Superhuman",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Death Step",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Sharkman Karate",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Dragon Talon",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Electric Claw",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Dark Step",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Electro",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Fishman Karate",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Dragon Claw",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
-        end
-    })
-    
-    Tabs.O:AddParagraph({
-        Title = "",
-        Content  = "Abilities Shop"
-    })
-    
+    shopaholic:SetValue("geppo")
+    shopaholic:OnChanged(function(Value)
+    _G.shopping = Value
+	if _G.shopping == "geppo" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
+    elseif _G.shopping == "electro" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
+    elseif _G.shopping == "fishman karate" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
+    elseif _G.shopping == "dragon claw" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
+	elseif _G.shopping == "superhuman" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+    elseif _G.shopping == "deathstep" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+    elseif _G.shopping == "dragontalon" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+    elseif _G.shopping == "sharkman karate" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+	elseif _G.shopping == "electric claw" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+    elseif _G.shopping == "godhuman" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+    elseif _G.shopping == "sanguine art" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt", true)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+	end
+end)
+
+   
     Tabs.O:AddButton({
         Title = "Buy Sky Jumb [$ 10,000 Beli ]",
         Description = "",
@@ -1384,11 +1366,6 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy"
         Callback = function()            
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
         end
-    })
-    
-    Tabs.O:AddParagraph({
-        Title = "",
-        Content  = "Misc Shop"
     })
     
    local Toggle = Tabs.O:AddToggle("MyToggle", {Title = "Buy Haki Color", Default = false })
@@ -1563,7 +1540,7 @@ Tabs.S:AddParagraph({
         Content  = "Setting Fram"
     })
 
-local FastAttack = Tabs.S:AddToggle("FastAttack", {Title = "FastAttack", Default = true })
+local FastAttack = Tabs.S:AddToggle("FastAttack", {Title = "Fast Attack", Default = true })
 
 FastAttack:OnChanged(function(Value)
     _G.FastAttackOld = Value
@@ -1618,7 +1595,7 @@ local FastDelay = Tabs.S:AddDropdown("FastDelay", {
     Default = 1,
 })
 
-FastDelay:SetValue("0.175")
+FastDelay:SetValue("0.15")
 
 FastDelay:OnChanged(function(Value)
     _G.FastAttackDelay = Value

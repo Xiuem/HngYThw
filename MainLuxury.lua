@@ -1416,7 +1416,6 @@ local Tabs = {
 	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
-local Settings = apsara.Options
 
 Tabs.Main:AddParagraph({
 	Title = "Main",

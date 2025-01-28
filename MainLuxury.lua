@@ -1804,16 +1804,6 @@ if World2 then
 
 end
 
-AttackRandomType = 1
-LPH_NO_VIRTUALIZE(function()
-	fask.spawn(function()
-		while wait() do 
-			AttackRandomType = math.random(1,5)
-			wait(0.3)
-		end
-	end)
-end)()
-
 LPH_JIT_MAX(function()
 	function AutoFarmLevel()
 		GetQuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title

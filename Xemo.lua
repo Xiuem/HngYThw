@@ -1335,39 +1335,34 @@ function RedeemCode(value)
 	end
 end)
 
+   local shoppinglist = {'geppo','buso','soru','ken'}
+
+    local shopaholic = Tabs.O:AddDropdown("shopaholic", {
+        Title = "Select Abilities",
+        Description = "",
+        Values = shoppinglist,
+        Multi = false,
+        Default = 1,
+    })
+    shopaholic:SetValue("geppo")
+    shopaholic:OnChanged(function(Value)
+    _G.shopping = Value
+	if _G.shopping == "geppo" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
+    elseif _G.shopping == "buso" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
+	elseif _G.shopping == "soru" then
+        wait(0.5)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
+    elseif _G.shopping == "ken" then
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt", true)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+	end
+end)
    
-    Tabs.O:AddButton({
-        Title = "Buy Sky Jumb [$ 10,000 Beli ]",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Buso Haki [$ 25,000 Beli ]",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Observation haki [$ 750,000 Beli ]",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
-        end
-    })
-    
-    Tabs.O:AddButton({
-        Title = "Buy Soru  [$ 100,000 Beli ]",
-        Description = "",
-        Callback = function()            
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
-        end
-    })
-    
    local Toggle = Tabs.O:AddToggle("MyToggle", {Title = "Buy Haki Color", Default = false })
 
     Toggle:OnChanged(function(Value)

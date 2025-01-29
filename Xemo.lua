@@ -766,7 +766,7 @@ Fluent:Notify({
 local Tabs = {
     G = Window:AddTab({ Title = "Main", Icon = "home" }),
     O = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
-    ST = Window:AddTab({ Title = "Status", Icon = "atom" }),
+    ST = Window:AddTab({ Title = "Status", Icon = "moon" }),
     S = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -1267,7 +1267,7 @@ function RedeemCode(value)
         Multi = false,
         Default = 1,
     })
-    shopaholic:SetValue("geppo")
+    shopaholic:SetValue("")
     shopaholic:OnChanged(function(Value)
     _G.shopping = Value
 	if _G.shopping == "geppo" then
@@ -1318,7 +1318,7 @@ end)
         Multi = false,
         Default = 1,
     })
-    shopaholic:SetValue("geppo")
+    shopaholic:SetValue("")
     shopaholic:OnChanged(function(Value)
     _G.shopping = Value
 	if _G.shopping == "geppo" then
@@ -1445,6 +1445,60 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
         end
     })
     
+-- Status Sever Made By Cath Lazzy 
+
+Tabs.ST:AddParagraph({
+	Title = "~ Full Moon ~",
+	Content = "Yo you can see status Full Moon!"
+})
+
+  local FullMoonStatus = Page4:Label("N/S")
+
+   pcall(function()
+     local MoonPhase = tonumber(game:GetService("Lighting"):GetAttribute("MoonPhase"))
+     if MoonPhase == 8 then
+         FullMoonStatus:Set("Moon 25% After Full Moon")
+     elseif MoonPhase == 7 then
+         FullMoonStatus:Set("Moon 50% After Full Moon")
+     elseif MoonPhase == 6 then
+         FullMoonStatus:Set("Moon 75% After Full Moon")
+     elseif MoonPhase == 5 then
+         FullMoonStatus:Set("Moon 100%")
+     elseif MoonPhase == 4 then
+         FullMoonStatus:Set("Moon 75%")
+      elseif MoonPhase == 3 then
+          FullMoonStatus:Set("Moon 50%")
+     elseif MoonPhase == 2 then
+         FullMoonStatus:Set("Moon 25%")
+     elseif MoonPhase == 1 then
+         FullMoonStatus:Set("Moon 0%")
+     end
+ end)
+ Page4:Button("Update Moon Status",function()
+     pcall(function()
+         local MoonPhase = tonumber(game:GetService("Lighting"):GetAttribute("MoonPhase"))
+         if MoonPhase == 8 then
+             FullMoonStatus:Set("Moon 25% After Full Moon")
+         elseif MoonPhase == 7 then
+             FullMoonStatus:Set("Moon 50% After Full Moon")
+         elseif MoonPhase == 6 then
+             FullMoonStatus:Set("Moon 75% After Full Moon")
+         elseif MoonPhase == 5 then
+             FullMoonStatus:Set("Moon 100%")
+         elseif MoonPhase == 4 then
+             FullMoonStatus:Set("Moon 75%")
+         elseif MoonPhase == 3 then
+             FullMoonStatus:Set("Moon 50%")
+         elseif MoonPhase == 2 then
+             FullMoonStatus:Set("Moon 25%")
+         elseif MoonPhase == 1 then
+             FullMoonStatus:Set("Moon 0%")
+         end
+     end)
+ end)
+
+
+
 -- Settings Tab :
 
 Tabs.S:AddParagraph({

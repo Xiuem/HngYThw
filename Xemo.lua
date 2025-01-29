@@ -748,7 +748,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 145,
     Size = UDim2.fromOffset(420, 350),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Darker",
+    Theme = "Amethyst",
     MinimizeKey = Enum.KeyCode.End -- Used when theres no MinimizeKeybind
 })
 
@@ -766,9 +766,7 @@ Fluent:Notify({
 local Tabs = {
     G = Window:AddTab({ Title = "Main", Icon = "home" }),
     O = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
-    ST = Window:AddTab({ Title = "Status", Icon = "bar-chart-4" }),
-    IQ = Window:AddTab({ Title = "Item & Quest", Icon = "swords" }),
-    LC = Window:AddTab({ Title = "Local Player", Icon = "user" }),
+    ST = Window:AddTab({ Title = "Status", Icon = "atom" }),
     S = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -776,7 +774,7 @@ local Tabs = {
 
 Tabs.G:AddParagraph({
         Title = "",
-        Content  = "Select Weapons"
+        Content  = "Farmming Toggle"
     })
 
 local SelectWP = Tabs.G:AddDropdown("Select Weapons", {
@@ -891,11 +889,6 @@ spawn(function()
         end)
     end
 end)
-
-Tabs.G:AddParagraph({
-        Title = "",
-        Content  = "Farmming Toggle"
-    })
 
 local FarmToggle = Tabs.G:AddToggle("FarmToggle", {Title = "Auto Farm Level", Default = false })
 
@@ -1452,63 +1445,6 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
         end
     })
     
--- Item and Quest :
-
-Tabs.IQ:AddParagraph({
-        Title = "",
-        Content  = "Auto Quest"
-    })
-
-local AutoSecondSea = Tabs.IQ:AddToggle("AutoSecondSea", {Title = "Auto Sea 2", Default = false })
-
-AutoSecondSea:OnChanged(function(Value)
-    _G.AutoSi2 = Value
-end)
-
-Options.AutoSecondSea:SetValue(false)
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.AutoSi2 then
-                if game.Players.LocalPlayer.Data.Level.Value >= 700 and taodangosea1 then
-                    if game.Workspace.Map.Ice.Door.CanCollide == true and game.Workspace.Map.Ice.Door.Transparency == 0 then
-                        Tween(CFrame.new(4855.90967, 5.9948287, 718.399536))
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress","Detective")
-                        wait(0.5)
-                        EquipTool("Key")
-                        wait(0.5)
-                        Tween(CFrame.new(1347.7124, 37.3751602, -1325.6488))
-                    elseif game.Workspace.Map.Ice.Door.CanCollide == false and game.Workspace.Map.Ice.Door.Transparency == 1 then
-                        if game:GetService("Workspace").Enemies:FindFirstChild("Ice Admiral") then
-                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                if v.Name == "Ice Admiral" and v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") and v.Parent and _G.AutoSi2 then
-                                    repeat task.wait()
-                                        EnableBuso()
-                                        EquipTool(SelectWP)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 0
-                                        v.Head.CanCollide = false
-                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                        Tween(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
-                                        game:GetService'VirtualUser':CaptureController()
-                                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
-                                    until not _G.AutoSi2 or v.Humanoid.Health <= 0 or not v:FindFirstChild("HumanoidRootPart") or not v.Parent
-                                end
-                            end
-                        else
-                            Tween(CFrame.new(1347.7124, 37.3751602, -1325.6488))
-                        end
-                    else
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
-                    end
-                end
-            end
-        end)
-    end
-end)
-                                        
 -- Settings Tab :
 
 Tabs.S:AddParagraph({

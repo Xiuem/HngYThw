@@ -2753,7 +2753,7 @@ local function wl(key)
                                     UseFastAttack = false
                                     ----print("Turn Off Fast Attack9")
                                 end
-                            )
+                            
                         elseif not getLowestLevelPlayer() then
                             cc2 = {}
                         end
@@ -8910,7 +8910,6 @@ local function wl(key)
                     Values = {
                         "Level",
                         "Cake Prince",
-                        --"Ectoplasm",
                         "Bone"
                     }
                 }

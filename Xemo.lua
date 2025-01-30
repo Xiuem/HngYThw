@@ -628,6 +628,8 @@ function Checknhiemvu()
     end
 end
 
+--Main function
+
 function Tween(Pos)
     local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if game.Players.LocalPlayer.Character.Humanoid.Sit and not _G.KillShark and not _G.KillPiranha and not _G.KillTerrorShark and not _G.KillFishCrew then
@@ -709,6 +711,209 @@ spawn(function()
         end)
     end)
 end)
+
+function MoonTextureId()
+            if Sea1 then
+                return game:GetService("Lighting").FantasySky.MoonTextureId
+            elseif Sea2 then
+                return game:GetService("Lighting").FantasySky.MoonTextureId
+            elseif Sea3 then
+                return game:GetService("Lighting").Sky.MoonTextureId
+            end
+        end
+        function CheckMoon()
+            moon8 = "http://www.roblox.com/asset/?id=9709150401"
+            moon7 = "http://www.roblox.com/asset/?id=9709150086"
+            moon6 = "http://www.roblox.com/asset/?id=9709149680"
+            moon5 = "http://www.roblox.com/asset/?id=9709149431"
+            moon4 = "http://www.roblox.com/asset/?id=9709149052"
+            moon3 = "http://www.roblox.com/asset/?id=9709143733"
+            moon2 = "http://www.roblox.com/asset/?id=9709139597"
+            moon1 = "http://www.roblox.com/asset/?id=9709135895"
+            moonreal = MoonTextureId()
+            cofullmoonkothangbeo = "Bad Moon"
+            if moonreal == moon5 or moonreal == moon4 then
+                if moonreal == moon5 then
+                    cofullmoonkothangbeo = "Full Moon"
+                elseif moonreal == moon4 then
+                    cofullmoonkothangbeo = "Next Night"
+                end
+            end
+            return cofullmoonkothangbeo
+        end
+        function mmbs(inp, c2)
+            ps = inp - c2
+            if ps > 1 then
+                return math.floor(ps) .. " Minutes"
+            else
+                return math.floor(ps * 60) .. " Seconds"
+            end
+        end    
+        function CheckHakiColor()
+            local v141, v142 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("ColorsDealer", "1")
+            if not v141 or v141 == 1 then
+                return "None", "0\198\146"
+            end
+            if v141 ~= 1 then
+                return v141, tostring(v142) .. "\198\146"
+            end
+        end  
+        function CheckElite()
+            return CheckMob(Elites, true)
+        end
+        function CheckEliteStatus()
+            if not Sea3 or not CheckElite() then
+                return "❌"
+            end
+            return "✅"
+        end
+        function CheckRace()
+            local v113 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Wenlocktoad", "1")
+            local v111 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Alchemist", "1")
+            if game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
+                return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V4"
+            end
+            if v113 == -2 then
+                return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V3"
+            end
+            if v111 == -2 then
+                return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V2"
+            end
+            return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V1"
+        end 
+        function CheckBoss(bossname)
+            bossname = RemoveLevelTitle(bossname)
+            for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+                if RemoveLevelTitle(v.Name) == bossname and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                    return v
+                end
+            end 
+            for i, v in pairs(game.workspace.Enemies:GetChildren()) do
+                if RemoveLevelTitle(v.Name) == bossname and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                    return v
+                end
+            end
+        end 
+        function ClaimQuestV3()
+            local v113 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Wenlocktoad", "1")
+            if v113 == 0 then
+                game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Wenlocktoad", "2")
+                wait(.1)
+                Notify(nil, "Claimed Quest V3", 10)
+            elseif v113 == -1 then
+                Notify(nil, "Leak of 2mill neli")
+            end
+        end
+        function CheckCakePrinceStatus()
+            ab, bb =
+                pcall(
+                function()
+                    if not Sea3 then
+                        return "Not Found"
+                    end
+                    if CheckBoss("Cake Prince [Lv. 2300] [Raid Boss]") or CheckBoss("Dough King [Lv. 2300] [Raid Boss]") then
+                        if CheckBoss("Cake Prince [Lv. 2300] [Raid Boss]") then
+                            return "Cake Prince Spawned"
+                        end
+                        if CheckBoss("Dough King [Lv. 2300] [Raid Boss]") then
+                            return "Dough King Spawned"
+                        end
+                    else
+                        return tonumber(
+                            string.match(game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner", true), "%d+")
+                        ) .. " Mobs Remaining..."
+                    end
+                end
+            )
+            if ab then
+                return bb
+            end
+            return "None"
+        end
+        function CheckGatCan()
+            if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CheckTempleDoor") then
+                return "✅"
+            end
+            return "❌"
+        end 
+        function PlayersCount()
+            return #game.Players:GetChildren()
+        end 
+        
+        function function8()
+            local c = game.Lighting
+            local c2 = c.ClockTime
+            if CheckMoon() == "Full Moon" and c2 <= 5 then
+                return tostring(function6()) .. " ( Will End Moon In " .. mmbs(5, c2).." )"
+            elseif CheckMoon() == "Full Moon" and (c2 > 5 and c2 < 12) then
+                return tostring(function6()) .. " ( Fake Moon )"
+            elseif CheckMoon() == "Full Moon" and (c2 > 12 and c2 < 18) then
+                return tostring(function6()) .. " ( Will Full Moon In " .. mmbs(18, c2).." )"
+            elseif CheckMoon() == "Full Moon" and (c2 > 18 and c2 <= 24) then
+                return tostring(function6()) .. " ( Will End Moon In " .. mmbs(30, c2).." )"
+            end
+            if CheckMoon() == "Next Night" and c2 < 12 then
+                return tostring(function6()) .. " ( Will Full Moon In " .. mmbs(18, c2).." )"
+            elseif CheckMoon() == "Next Night" and c2 > 12 then
+                return tostring(function6()) .. " ( Will Full Moon In " .. mmbs(18 + 24, c2).." )"
+            end
+            return tostring(function6())
+        end
+        function CheckMirageIslandStatus()
+            if not Sea3 or not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                return "❌"
+            end
+            return "✅ "..tostring(math.floor(GetDistance(getHighestPoint()))/10).."m away"
+        end
+        function function7()
+            GameTime = "Error"
+            local c = game.Lighting
+            local c2 = c.ClockTime
+            if c2 >= 18 or c2 < 5 then
+                GameTime = "Night"
+            else
+                GameTime = "Day"
+            end
+            return GameTime
+        end
+        function function6()
+            return math.floor(game.Lighting.ClockTime)
+        end
+        function getServerTime()
+            RealTime = tostring(math.floor(game.Lighting.ClockTime * 100) / 100)
+            RealTime = tostring(game.Lighting.ClockTime)
+            RealTimeTable = RealTime:split(".")
+            Minute, Second = RealTimeTable[1], tonumber((0 + tonumber(RealTimeTable[2] / 100))) * 60
+            return Minute, Second
+        end     
+        function CheckAcientOneStatus()
+            if not game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
+                return "You have yet to achieve greatness"
+            end
+            local v227 = nil
+            local v228 = nil
+            local v229 = nil
+            v229, v228, v227 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("UpgradeRace", "Check")
+            if v229 == 1 then
+                return "Required Train More"
+            elseif v229 == 2 or v229 == 4 or v229 == 7 then
+                return "Can Buy Gear With " .. v227 .. "\198\146"
+            elseif v229 == 3 then
+                return "Required Train More"
+            elseif v229 == 5 then
+                return "You Are Done Your Race."
+            elseif v229 == 6 then
+                return "Upgrades completed: " .. v228 - 2 .. "/3, Need Trains More"
+            end
+            if v229 ~= 8 then
+                if v229 == 0 then
+                    return "Ready For Trial"
+                else
+                    return "You have yet to achieve greatness"
+                end
+            end
+            return "Remaining " .. 10 - v228 .. " training sessions."
+        end
 
 -- Open & Close Ui : skid Night Hub
 
@@ -946,107 +1151,6 @@ local FarmToggle = Tabs.G:AddToggle("FarmToggle", {Title = "Auto Farm Level", De
         end
     end)
 
-local AutoKatakuriToggle = Tabs.G:AddToggle("AutoKatakuriToggle", {Title = "Auto Fram Katakuri", Default = false })
-
-AutoKatakuriToggle:OnChanged(function(Value)
-        _G.AutoKatakuri = Value
-    end)
-
-    Options.AutoKatakuriToggle:SetValue(false)
-
-spawn(function()
-        while wait() do
-        if _G.AutoKatakuri then
-                pcall(function()
-                    if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if v.Name == "Cake Prince" or v.Name == "Dough King" then
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        AutoHaki()
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 0
-                                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                        topos(v.HumanoidRootPart.CFrame * Pos)
-                                        game:GetService("VirtualUser"):CaptureController()
-                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                        sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
-                                    until not _G.AutoDoughtBoss or not v.Parent or v.Humanoid.Health <= 0
-                                end
-                            end
-                        end
-                    else
-                        if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") then
-                            topos(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]").HumanoidRootPart.CFrame * CFrame.new(5,10,2))
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-    
-    spawn(function()
-        while wait() do
-            if CakeFMode == "AcceptQuest" and _G.AutoDoughtBoss and World3 and not game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince")  then
-                pcall(function()
-                    local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-                    if not string.find(QuestTitle, "Cookie Crafter") then
-                        MagnetDought = false
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-                    end
-                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-                        MagnetDought = false
-                        if BypassTP then
-                        if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CakeQuestPos.Position).Magnitude > 1500 then
-						BTP(CakeQuestPos)
-						elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CakeQuestPos.Position).Magnitude < 1500 then
-						topos(CakeQuestPos)
-						end
-					else
-						topos(CakeQuestPos)
-					end
-                    if (CakeQuestPos.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then                            
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest","CakeQuest1",1)
-					end
-                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-                        if game:GetService("Workspace").Enemies:FindFirstChild("Cookie Crafter") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Guard") or game:GetService("Workspace").Enemies:FindFirstChild("Baking Staff") or game:GetService("Workspace").Enemies:FindFirstChild("Head Baker") then
-                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                                    if v.Name == "Cookie Crafter" or v.Name == "Cake Guard" or v.Name == "Baking Staff" or v.Name == "Head Baker" then
-                                        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Cookie Crafter") then
-                                            repeat task.wait()
-                                                EquipWeapon(_G.SelectWeapon)
-                                                AutoHaki()                                            
-                                                PosMonCake = v.HumanoidRootPart.CFrame
-                                                topos(v.HumanoidRootPart.CFrame * Pos)
-                                                v.HumanoidRootPart.CanCollide = false
-                                                v.Humanoid.WalkSpeed = 0
-                                                v.Head.CanCollide = false
-                                                v.HumanoidRootPart.Size = Vector3.new(70,70,70)
-                                                MagnetDought = true
-                                                PosMonDoughtOpenDoor = v.HumanoidRootPart.CFrame
-                                                game:GetService'VirtualUser':CaptureController()
-                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                            until not _G.AutoDoughtBoss or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false or v.Humanoid.Health <= 0 or game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 0 or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") or KillMob == 0
-                                        else
-                                            MagnetDought = false
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-                                        end
-                                    end
-                                end
-                            end
-                        else
-                            MagnetDought = false
-                            if game:GetService("ReplicatedStorage"):FindFirstChild("Cookie Crafter") then
-                             topos(game:GetService("ReplicatedStorage"):FindFirstChild("Cookie Crafter").HumanoidRootPart.CFrame * CFrame.new(15,10,2))
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
 
 local AutoBoneToggle = Tabs.G:AddToggle("AutoBoneToggle", {Title = "Auto Fram Bone", Default = false })
 
@@ -1451,53 +1555,32 @@ Tabs.ST:AddParagraph({
 	Title = "~ Full Moon ~",
 	Content = "Yo you can see status Full Moon!"
 })
-
-  local FullMoonStatus = Page4:Label("N/S")
-
-   pcall(function()
-     local MoonPhase = tonumber(game:GetService("Lighting"):GetAttribute("MoonPhase"))
-     if MoonPhase == 8 then
-         FullMoonStatus:Set("Moon 25% After Full Moon")
-     elseif MoonPhase == 7 then
-         FullMoonStatus:Set("Moon 50% After Full Moon")
-     elseif MoonPhase == 6 then
-         FullMoonStatus:Set("Moon 75% After Full Moon")
-     elseif MoonPhase == 5 then
-         FullMoonStatus:Set("Moon 100%")
-     elseif MoonPhase == 4 then
-         FullMoonStatus:Set("Moon 75%")
-      elseif MoonPhase == 3 then
-          FullMoonStatus:Set("Moon 50%")
-     elseif MoonPhase == 2 then
-         FullMoonStatus:Set("Moon 25%")
-     elseif MoonPhase == 1 then
-         FullMoonStatus:Set("Moon 0%")
-     end
- end)
- Page4:Button("Update Moon Status",function()
-     pcall(function()
-         local MoonPhase = tonumber(game:GetService("Lighting"):GetAttribute("MoonPhase"))
-         if MoonPhase == 8 then
-             FullMoonStatus:Set("Moon 25% After Full Moon")
-         elseif MoonPhase == 7 then
-             FullMoonStatus:Set("Moon 50% After Full Moon")
-         elseif MoonPhase == 6 then
-             FullMoonStatus:Set("Moon 75% After Full Moon")
-         elseif MoonPhase == 5 then
-             FullMoonStatus:Set("Moon 100%")
-         elseif MoonPhase == 4 then
-             FullMoonStatus:Set("Moon 75%")
-         elseif MoonPhase == 3 then
-             FullMoonStatus:Set("Moon 50%")
-         elseif MoonPhase == 2 then
-             FullMoonStatus:Set("Moon 25%")
-         elseif MoonPhase == 1 then
-             FullMoonStatus:Set("Moon 0%")
-         end
-     end)
- end)
-
-
+ 
+      task.spawn(function()
+                    while task.wait() do  
+                        svstats,svstats2 = pcall(function()  
+                            haki1, haki2 = CheckHakiColor()
+                            SV3 = "Player In Server: "..tostring(PlayersCount()).."/"..game.Players.MaxPlayers.."\n".."Server Time: " .. function8().."\nAcient One Status: " .. tostring(CheckAcientOneStatus())..
+                            "\nCake Prince Status: " .. tostring(CheckCakePrinceStatus())..
+                            "\nMirage Puzzle: " .. tostring(CheckGatCan())..
+                            "\nMirage Island: " .. tostring(CheckMirageIslandStatus())..
+                            "\nElite: "..CheckEliteStatus()..
+                            "\nRace: " .. tostring(CheckRace())
+                            if not Sea1 then 
+                                SV3 = SV3.."\nHaki Color: " .. tostring(haki1) .. " | " .. haki2
+                            end
+                            ServerStats_Paragraph:Set(
+                                {
+                                    Title = "Server & Player Informations",
+                                    Content = SV3
+                                }
+                            )
+                        end)
+                        if not svstats then print("sv stats",svstats2)end 
+                    end
+                end)
+            end
+        end  
 
 -- Settings Tab :
 

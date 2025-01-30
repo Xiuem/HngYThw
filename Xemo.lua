@@ -681,7 +681,7 @@ end
 spawn(function()
     while wait() do
         pcall(function()
-            if _G.AutoElite or _G.AutoFactory or _G.AutoPirates or _G.AutoBone or _G.AutoKatakuri or _G.AutoSi2 or _G.LevelFarm or NoCLip == true then
+            if _G.AutoElite or _Remove_Effect or  _G.AutoFactory or _G.AutoPirates or _G.AutoBone or _G.AutoKatakuri or _G.AutoSi2 or _G.LevelFarm or NoCLip == true then
                 if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyGyro") then
                     local Noclip = Instance.new("BodyVelocity")
                     Noclip.Name = "BodyClip"
@@ -1572,14 +1572,6 @@ spawn(function()
     end
 end)
 
-local BypassTeleport = Tabs.S:AddToggle("BypassTeleport", {Title = "Bypass Teleport", Default = true })
-
-BypassTeleport:OnChanged(function(Value)
-    BypassTP = Value
-end)
-
-Options.BypassTeleport:SetValue(true)
-
 local Removeeffect = Tabs.S:AddToggle("Removeeffect", {Title = "Remove Effect", Default = true })
 
     Toggle:OnChanged(function(Value)
@@ -1597,3 +1589,12 @@ local Removeeffect = Tabs.S:AddToggle("Removeeffect", {Title = "Remove Effect", 
         end
     end)
     end)
+
+local BypassTeleport = Tabs.S:AddToggle("BypassTeleport", {Title = "Bypass Teleport", Default = true })
+
+BypassTeleport:OnChanged(function(Value)
+    BypassTP = Value
+end)
+
+Options.BypassTeleport:SetValue(true)
+ end

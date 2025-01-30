@@ -1,4 +1,4 @@
--- TaoDepSkid
+-- TaoDeoSkid
 if game.PlaceId == 2753915549 then
     taodangosea1 = true
 elseif game.PlaceId == 4442272183 then
@@ -628,8 +628,6 @@ function Checknhiemvu()
     end
 end
 
---Main function
-
 function Tween(Pos)
     local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if game.Players.LocalPlayer.Character.Humanoid.Sit and not _G.KillShark and not _G.KillPiranha and not _G.KillTerrorShark and not _G.KillFishCrew then
@@ -712,209 +710,6 @@ spawn(function()
     end)
 end)
 
-function MoonTextureId()
-            if Sea1 then
-                return game:GetService("Lighting").FantasySky.MoonTextureId
-            elseif Sea2 then
-                return game:GetService("Lighting").FantasySky.MoonTextureId
-            elseif Sea3 then
-                return game:GetService("Lighting").Sky.MoonTextureId
-            end
-        end
-        function CheckMoon()
-            moon8 = "http://www.roblox.com/asset/?id=9709150401"
-            moon7 = "http://www.roblox.com/asset/?id=9709150086"
-            moon6 = "http://www.roblox.com/asset/?id=9709149680"
-            moon5 = "http://www.roblox.com/asset/?id=9709149431"
-            moon4 = "http://www.roblox.com/asset/?id=9709149052"
-            moon3 = "http://www.roblox.com/asset/?id=9709143733"
-            moon2 = "http://www.roblox.com/asset/?id=9709139597"
-            moon1 = "http://www.roblox.com/asset/?id=9709135895"
-            moonreal = MoonTextureId()
-            cofullmoonkothangbeo = "Bad Moon"
-            if moonreal == moon5 or moonreal == moon4 then
-                if moonreal == moon5 then
-                    cofullmoonkothangbeo = "Full Moon"
-                elseif moonreal == moon4 then
-                    cofullmoonkothangbeo = "Next Night"
-                end
-            end
-            return cofullmoonkothangbeo
-        end
-        function mmbs(inp, c2)
-            ps = inp - c2
-            if ps > 1 then
-                return math.floor(ps) .. " Minutes"
-            else
-                return math.floor(ps * 60) .. " Seconds"
-            end
-        end    
-        function CheckHakiColor()
-            local v141, v142 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("ColorsDealer", "1")
-            if not v141 or v141 == 1 then
-                return "None", "0\198\146"
-            end
-            if v141 ~= 1 then
-                return v141, tostring(v142) .. "\198\146"
-            end
-        end  
-        function CheckElite()
-            return CheckMob(Elites, true)
-        end
-        function CheckEliteStatus()
-            if not Sea3 or not CheckElite() then
-                return "❌"
-            end
-            return "✅"
-        end
-        function CheckRace()
-            local v113 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Wenlocktoad", "1")
-            local v111 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Alchemist", "1")
-            if game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
-                return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V4"
-            end
-            if v113 == -2 then
-                return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V3"
-            end
-            if v111 == -2 then
-                return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V2"
-            end
-            return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V1"
-        end 
-        function CheckBoss(bossname)
-            bossname = RemoveLevelTitle(bossname)
-            for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-                if RemoveLevelTitle(v.Name) == bossname and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                    return v
-                end
-            end 
-            for i, v in pairs(game.workspace.Enemies:GetChildren()) do
-                if RemoveLevelTitle(v.Name) == bossname and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                    return v
-                end
-            end
-        end 
-        function ClaimQuestV3()
-            local v113 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Wenlocktoad", "1")
-            if v113 == 0 then
-                game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Wenlocktoad", "2")
-                wait(.1)
-                Notify(nil, "Claimed Quest V3", 10)
-            elseif v113 == -1 then
-                Notify(nil, "Leak of 2mill neli")
-            end
-        end
-        function CheckCakePrinceStatus()
-            ab, bb =
-                pcall(
-                function()
-                    if not Sea3 then
-                        return "Not Found"
-                    end
-                    if CheckBoss("Cake Prince [Lv. 2300] [Raid Boss]") or CheckBoss("Dough King [Lv. 2300] [Raid Boss]") then
-                        if CheckBoss("Cake Prince [Lv. 2300] [Raid Boss]") then
-                            return "Cake Prince Spawned"
-                        end
-                        if CheckBoss("Dough King [Lv. 2300] [Raid Boss]") then
-                            return "Dough King Spawned"
-                        end
-                    else
-                        return tonumber(
-                            string.match(game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner", true), "%d+")
-                        ) .. " Mobs Remaining..."
-                    end
-                end
-            )
-            if ab then
-                return bb
-            end
-            return "None"
-        end
-        function CheckGatCan()
-            if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CheckTempleDoor") then
-                return "✅"
-            end
-            return "❌"
-        end 
-        function PlayersCount()
-            return #game.Players:GetChildren()
-        end 
-        
-        function function8()
-            local c = game.Lighting
-            local c2 = c.ClockTime
-            if CheckMoon() == "Full Moon" and c2 <= 5 then
-                return tostring(function6()) .. " ( Will End Moon In " .. mmbs(5, c2).." )"
-            elseif CheckMoon() == "Full Moon" and (c2 > 5 and c2 < 12) then
-                return tostring(function6()) .. " ( Fake Moon )"
-            elseif CheckMoon() == "Full Moon" and (c2 > 12 and c2 < 18) then
-                return tostring(function6()) .. " ( Will Full Moon In " .. mmbs(18, c2).." )"
-            elseif CheckMoon() == "Full Moon" and (c2 > 18 and c2 <= 24) then
-                return tostring(function6()) .. " ( Will End Moon In " .. mmbs(30, c2).." )"
-            end
-            if CheckMoon() == "Next Night" and c2 < 12 then
-                return tostring(function6()) .. " ( Will Full Moon In " .. mmbs(18, c2).." )"
-            elseif CheckMoon() == "Next Night" and c2 > 12 then
-                return tostring(function6()) .. " ( Will Full Moon In " .. mmbs(18 + 24, c2).." )"
-            end
-            return tostring(function6())
-        end
-        function CheckMirageIslandStatus()
-            if not Sea3 or not game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-                return "❌"
-            end
-            return "✅ "..tostring(math.floor(GetDistance(getHighestPoint()))/10).."m away"
-        end
-        function function7()
-            GameTime = "Error"
-            local c = game.Lighting
-            local c2 = c.ClockTime
-            if c2 >= 18 or c2 < 5 then
-                GameTime = "Night"
-            else
-                GameTime = "Day"
-            end
-            return GameTime
-        end
-        function function6()
-            return math.floor(game.Lighting.ClockTime)
-        end
-        function getServerTime()
-            RealTime = tostring(math.floor(game.Lighting.ClockTime * 100) / 100)
-            RealTime = tostring(game.Lighting.ClockTime)
-            RealTimeTable = RealTime:split(".")
-            Minute, Second = RealTimeTable[1], tonumber((0 + tonumber(RealTimeTable[2] / 100))) * 60
-            return Minute, Second
-        end     
-        function CheckAcientOneStatus()
-            if not game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
-                return "You have yet to achieve greatness"
-            end
-            local v227 = nil
-            local v228 = nil
-            local v229 = nil
-            v229, v228, v227 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("UpgradeRace", "Check")
-            if v229 == 1 then
-                return "Required Train More"
-            elseif v229 == 2 or v229 == 4 or v229 == 7 then
-                return "Can Buy Gear With " .. v227 .. "\198\146"
-            elseif v229 == 3 then
-                return "Required Train More"
-            elseif v229 == 5 then
-                return "You Are Done Your Race."
-            elseif v229 == 6 then
-                return "Upgrades completed: " .. v228 - 2 .. "/3, Need Trains More"
-            end
-            if v229 ~= 8 then
-                if v229 == 0 then
-                    return "Ready For Trial"
-                else
-                    return "You have yet to achieve greatness"
-                end
-            end
-            return "Remaining " .. 10 - v228 .. " training sessions."
-        end
-
 -- Open & Close Ui : skid Night Hub
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -953,7 +748,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 145,
     Size = UDim2.fromOffset(420, 350),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Amethyst",
+    Theme = "Darker",
     MinimizeKey = Enum.KeyCode.End -- Used when theres no MinimizeKeybind
 })
 
@@ -969,9 +764,12 @@ Fluent:Notify({
 })
 
 local Tabs = {
+	SF = Window:AddTab({ Title = "Settings Fram", Icon = "chrome" }),
     G = Window:AddTab({ Title = "Main", Icon = "home" }),
     O = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
-    ST = Window:AddTab({ Title = "Status", Icon = "moon" }),
+    ST = Window:AddTab({ Title = "Status", Icon = "bar-chart-4" }),
+    IQ = Window:AddTab({ Title = "Item & Quest", Icon = "swords" }),
+    LC = Window:AddTab({ Title = "Local Player", Icon = "user" }),
     S = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -979,7 +777,7 @@ local Tabs = {
 
 Tabs.G:AddParagraph({
         Title = "",
-        Content  = "Farmming Toggle"
+        Content  = "Select Weapons"
     })
 
 local SelectWP = Tabs.G:AddDropdown("Select Weapons", {
@@ -1095,6 +893,11 @@ spawn(function()
     end
 end)
 
+Tabs.G:AddParagraph({
+        Title = "",
+        Content  = "Farmming Toggle"
+    })
+
 local FarmToggle = Tabs.G:AddToggle("FarmToggle", {Title = "Auto Farm Level", Default = false })
 
     FarmToggle:OnChanged(function(Value)
@@ -1151,6 +954,126 @@ local FarmToggle = Tabs.G:AddToggle("FarmToggle", {Title = "Auto Farm Level", De
         end
     end)
 
+local AutoKatakuriToggle = Tabs.G:AddToggle("AutoKatakuriToggle", {Title = "Auto Fram Katakuri", Default = false })
+
+AutoKatakuriToggle:OnChanged(function(Value)
+        _G.AutoKatakuri = Value
+    end)
+
+    Options.AutoKatakuriToggle:SetValue(false)
+
+spawn(function()
+    while wait() do
+        if _G.AutoKatakuri then
+            pcall(function()
+                local spawnerData = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+                local dataLength = string.len(spawnerData)
+                if dataLength == 88 then
+                    CountMob = tonumber(string.sub(spawnerData, 39, 41)) - 500
+                elseif dataLength == 87 then
+                    CountMob = tonumber(string.sub(spawnerData, 40, 41)) - 500
+                elseif dataLength == 86 then
+                    CountMob = tonumber(string.sub(spawnerData, 41, 41)) - 500
+                end
+            end)
+        end
+    end
+end)
+
+local PosCake = CFrame.new(-2091.911865234375, 70.00884246826172, -12142.8359375)
+spawn(function()
+    while wait() do
+        if _G.AutoKatakuri then
+            pcall(function()
+                if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if v.Name == "Cake Prince" or v.Name == "Dough King" then
+                            if v.Humanoid.Health > 0 and (v:FindFirstChild("HumanoidRootPart") or v.Parent or _G.AutoKatakuri) then
+                                repeat
+                                    wait()
+                                    EnableBuso()
+                                    EquipTool(SelectWP)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                    Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, -50, 0))
+                                    game:GetService'VirtualUser':CaptureController()
+                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                until v.Humanoid.Health <= 0 or not v.Parent or not v:FindFirstChild("HumanoidRootPart") or game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 1
+                            end
+                        end
+                    end
+                else
+                    if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince").HumanoidRootPart.CFrame * CFrame.new(20,- 50 ,20))
+                    elseif game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Dough King").HumanoidRootPart.CFrame * CFrame.new(20,- 50 ,20))
+                    else
+                        if CountMob == 0 then
+                        end
+                        if game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 1 then
+                            if game:GetService("Workspace").Enemies:FindFirstChild("Cookie Crafter") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Guard") or game:GetService("Workspace").Enemies:FindFirstChild("Baking Staff") or game:GetService("Workspace").Enemies:FindFirstChild("Head Baker") then
+                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                    if v.Name == "Cookie Crafter" or v.Name == "Cake Guard" or v.Name == "Baking Staff" or v.Name == "Head Baker" then
+                                        if v.Humanoid.Health > 0 and (v:FindFirstChild("HumanoidRootPart") or v.Parent or _G.AutoKatakuri) then
+                                            repeat
+                                                wait()
+                                                EnableBuso()
+                                                EquipTool(SelectWP)
+                                                v.HumanoidRootPart.CanCollide = false
+                                                v.Humanoid.WalkSpeed = 0
+                                                v.Head.CanCollide = false
+                                                v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                Tween(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+                                                BringKatakuriMob = true
+                                                PosMobCake = v.HumanoidRootPart.CFrame
+                                                game:GetService'VirtualUser':CaptureController()
+                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                            until v.Humanoid.Health <= 0 or not v.Parent or not v:FindFirstChild("HumanoidRootPart") or game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 0
+                                        end
+                                    end
+                                end
+                            else
+                                if BypassTP then
+                                    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - PosCake.Position).Magnitude > 2000 then
+                                        Taixiu(PosCake)
+                                    elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - PosCake.Position).Magnitude < 2000 then
+                                        Tween(PosCake)
+                                    end
+                                else
+                                    Tween(PosCake)
+                                end
+                                BringKatakuriMob = false
+                                if game:GetService("ReplicatedStorage"):FindFirstChild("Cookie Crafter") then
+                                    Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cookie Crafter").HumanoidRootPart.CFrame * CFrame.new(2,20,2)) 
+                                else
+                                    if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Guard") then
+                                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Guard").HumanoidRootPart.CFrame * CFrame.new(2,20,2)) 
+                                    else
+                                        if game:GetService("ReplicatedStorage"):FindFirstChild("Baking Staff") then
+                                            Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Baking Staff").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                                        else
+                                            if game:GetService("ReplicatedStorage"):FindFirstChild("Head Baker") then
+                                                Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Head Baker").HumanoidRootPart.CFrame * CFrame.new(2,20,2))
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        else
+                            if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") then
+                                Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince").HumanoidRootPart.CFrame * CFrame.new(20,40,20))
+                            elseif game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") then
+                                Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Dough King").HumanoidRootPart.CFrame * CFrame.new(20,40,20))
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
 
 local AutoBoneToggle = Tabs.G:AddToggle("AutoBoneToggle", {Title = "Auto Fram Bone", Default = false })
 
@@ -1371,7 +1294,7 @@ function RedeemCode(value)
         Multi = false,
         Default = 1,
     })
-    shopaholic:SetValue("")
+    shopaholic:SetValue("geppo")
     shopaholic:OnChanged(function(Value)
     _G.shopping = Value
 	if _G.shopping == "geppo" then
@@ -1422,7 +1345,7 @@ end)
         Multi = false,
         Default = 1,
     })
-    shopaholic:SetValue("")
+    shopaholic:SetValue("geppo")
     shopaholic:OnChanged(function(Value)
     _G.shopping = Value
 	if _G.shopping == "geppo" then
@@ -1549,39 +1472,63 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
         end
     })
     
--- Status Sever Made By Cath Lazzy 
+-- Item and Quest :
 
-Tabs.ST:AddParagraph({
-	Title = "~ Full Moon ~",
-	Content = "Yo you can see status Full Moon!"
-})
- 
-      task.spawn(function()
-                    while task.wait() do  
-                        svstats,svstats2 = pcall(function()  
-                            haki1, haki2 = CheckHakiColor()
-                            SV3 = "Player In Server: "..tostring(PlayersCount()).."/"..game.Players.MaxPlayers.."\n".."Server Time: " .. function8().."\nAcient One Status: " .. tostring(CheckAcientOneStatus())..
-                            "\nCake Prince Status: " .. tostring(CheckCakePrinceStatus())..
-                            "\nMirage Puzzle: " .. tostring(CheckGatCan())..
-                            "\nMirage Island: " .. tostring(CheckMirageIslandStatus())..
-                            "\nElite: "..CheckEliteStatus()..
-                            "\nRace: " .. tostring(CheckRace())
-                            if not Sea1 then 
-                                SV3 = SV3.."\nHaki Color: " .. tostring(haki1) .. " | " .. haki2
+Tabs.IQ:AddParagraph({
+        Title = "",
+        Content  = "Auto Quest"
+    })
+
+local AutoSecondSea = Tabs.IQ:AddToggle("AutoSecondSea", {Title = "Auto Sea 2", Default = false })
+
+AutoSecondSea:OnChanged(function(Value)
+    _G.AutoSi2 = Value
+end)
+
+Options.AutoSecondSea:SetValue(false)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoSi2 then
+                if game.Players.LocalPlayer.Data.Level.Value >= 700 and taodangosea1 then
+                    if game.Workspace.Map.Ice.Door.CanCollide == true and game.Workspace.Map.Ice.Door.Transparency == 0 then
+                        Tween(CFrame.new(4855.90967, 5.9948287, 718.399536))
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress","Detective")
+                        wait(0.5)
+                        EquipTool("Key")
+                        wait(0.5)
+                        Tween(CFrame.new(1347.7124, 37.3751602, -1325.6488))
+                    elseif game.Workspace.Map.Ice.Door.CanCollide == false and game.Workspace.Map.Ice.Door.Transparency == 1 then
+                        if game:GetService("Workspace").Enemies:FindFirstChild("Ice Admiral") then
+                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if v.Name == "Ice Admiral" and v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") and v.Parent and _G.AutoSi2 then
+                                    repeat task.wait()
+                                        EnableBuso()
+                                        EquipTool(SelectWP)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.Head.CanCollide = false
+                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                        Tween(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+                                        game:GetService'VirtualUser':CaptureController()
+                                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+                                    until not _G.AutoSi2 or v.Humanoid.Health <= 0 or not v:FindFirstChild("HumanoidRootPart") or not v.Parent
+                                end
                             end
-                            ServerStats_Paragraph:Set(
-                                {
-                                    Title = "Server & Player Informations",
-                                    Content = SV3
-                                }
-                            )
-                        end)
-                        if not svstats then print("sv stats",svstats2)end 
+                        else
+                            Tween(CFrame.new(1347.7124, 37.3751602, -1325.6488))
+                        end
+                    else
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
                     end
-                end)
+                end
             end
-        end  
-
+        end)
+    end
+end)
+                                        
 -- Settings Tab :
 
 Tabs.S:AddParagraph({

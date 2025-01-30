@@ -780,7 +780,7 @@ Tabs.SF:AddParagraph({
         Content  = "Select Weapons"
     })
 
-local SelectWP = Tabs.G:AddDropdown("Select Weapons", {
+local SelectWP = Tabs.SF:AddDropdown("Select Weapons", {
     Title = "Select Weapons",
     Values = {"Melee", "Sword"},
     Multi = false,
@@ -813,7 +813,7 @@ task.spawn(function()
     end
 end)
 
-local Removeeffect = Tabs.Settings:AddToggle("Removeeffect", {Title = "Remove Effect", Default = true })
+local Removeeffect = Tabs.SF:AddToggle("Removeeffect", {Title = "Remove Effect", Default = true })
 
     Toggle:OnChanged(function(Value)
         _G.Remove_Effect = Value		

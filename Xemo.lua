@@ -811,24 +811,6 @@ task.spawn(function()
     end
 end)
 
-local Removeeffect = Tabs.SF:AddToggle("Removeeffect", {Title = "Remove Effect", Default = true })
-
-    Toggle:OnChanged(function(Value)
-        _G.Remove_Effect = Value		
-    end)
-    
-    spawn(function()
-    game:GetService('RunService').Stepped:Connect(function()
-        if _G.Remove_Effect then
-            for i, v in pairs(game:GetService("ReplicatedStorage").Effect.Container:GetChildren()) do
-                if v.Name == "Death" then
-                    v:Destroy() 
-                end
-            end
-        end
-    end)
-    end)
-
 local Battocv4 = Tabs.SF:AddToggle("Battocv4", {Title = "Auto Turn V4", Default = false })
 
     Battocv4:OnChanged(function(Value)
@@ -1597,4 +1579,21 @@ BypassTeleport:OnChanged(function(Value)
 end)
 
 Options.BypassTeleport:SetValue(true)
-end
+
+local Removeeffect = Tabs.S:AddToggle("Removeeffect", {Title = "Remove Effect", Default = true })
+
+    Toggle:OnChanged(function(Value)
+        _G.Remove_Effect = Value		
+    end)
+    
+    spawn(function()
+    game:GetService('RunService').Stepped:Connect(function()
+        if _G.Remove_Effect then
+            for i, v in pairs(game:GetService("ReplicatedStorage").Effect.Container:GetChildren()) do
+                if v.Name == "Death" then
+                    v:Destroy() 
+                end
+            end
+        end
+    end)
+    end)

@@ -1,5 +1,5 @@
 
---[[local a = game:GetService("RbxAnalyticsService"):GetClientId()
+ local a = game:GetService("RbxAnalyticsService"):GetClientId()
 if string.lower(a) ~= game:GetService("RbxAnalyticsService"):GetClientId() then
     game.Players.LocalPlayer:Kick("\n \nMobile Only\nMobile Only\n\nMobile Only\nMobile Only\n\nMobile Only\nMobile Only\n\nMobile Only\nMobile Only\n\nMobile Only\nMobile Only\n")
     wait(10)
@@ -2082,7 +2082,6 @@ end)
             end
         end
     end
----
 
   local module = {
   NextAttack = 0,
@@ -9474,7 +9473,6 @@ end
         end
     end)
 
---[[
 local Window = Library:Window() ; 
 
 Window:SetBeli("wokr","asd",Color3.fromRGB(255, 183, 0))

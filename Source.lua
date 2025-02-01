@@ -135,28 +135,7 @@
             )
         until game.Players.LocalPlayer.Team ~= nil
         --- Creating Ui ---
-        
-        local Icons = {}
-        local Success, Response =
-            pcall(
-            function()
-                Icons =
-                    HttpService:JSONDecode(
-                    game:HttpGetAsync(
-                        "https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json"
-                    )
-                ).icons
-            end
-        )
-        local MMBStatus = ""
-        if not Success then  
-        local CheckMobile = function()
-            if
-                game:GetService("UserInputService").TouchEnabled
-             then
-                return true 
-            end
-        end 
+
         IsMobile = CheckMobile()
         Size11,Size22 = 600,460
         if IsMobile then 

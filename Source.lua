@@ -135,26 +135,45 @@
         until game.Players.LocalPlayer.Team ~= nil
         --- Creating Ui ---
         
-        local Icons = {}
-        local Success, Response =
-            pcall(
-            function()
-                Icons =
-                    HttpService:JSONDecode(
-                    game:HttpGetAsync(
-                        "https://raw.githubusercontent.com/dawid-scripts/Fluent/refs/heads/master/src/Icons.lua"
-                    )
-                ).icons
+        local LocalIcons = {}
+local HttpService = game:GetService("HttpService")
+
+local function FetchIcons()
+    local Success, Response = pcall(function()
+        local data = HttpService:JSONDecode(HttpService:GetAsync("https://raw.githubusercontent.com/dawid-scripts/Fluent/refs/heads/master/src/Icons.lua"))
+        if data and data.icons then
+            for k, v in pairs(data.icons) do
+                LocalIcons[k] = v
             end
-        )
-        local MMBStatus = ""
-        local CheckMobile = function()
-            if
-                game:GetService("UserInputService").TouchEnabled
-             then
-                return true 
-            end
-        end 
+        else
+            warn("Lỗi: Dữ liệu JSON không hợp lệ hoặc thiếu trường 'icons'. Phản hồi: " .. (Response or "Không có phản hồi"))
+        end
+    end)
+
+    if not Success then
+        warn("Lỗi khi tải biểu tượng: " .. (Response or "Không có phản hồi"))
+        game.Players.LocalPlayer:SendSystemMessage("Một số biểu tượng có thể không được tải.")
+        -- Cung cấp biểu tượng dự phòng nếu có
+    end
+end
+
+local function CheckMobile()
+    return game:GetService("UserInputService").TouchEnabled
+end
+
+-- Gọi hàm để tải biểu tượng khi script được thực thi
+FetchIcons()
+
+-- Bây giờ bạn có thể sử dụng LocalIcons[tênBiểuTượng] để truy cập các biểu tượng
+print(LocalIcons["someIconName"]) -- Ví dụ
+
+-- Đoạn code mẫu để sử dụng biểu tượng trong ImageLabel
+local ImageLabel = script.Parent:WaitForChild("ImageLabel") -- Giả sử ImageLabel là con của script
+if LocalIcons["someIconName"] then
+    ImageLabel.Image = LocalIcons["someIconName"]
+else
+    warn("Không tìm thấy biểu tượng 'someIconName'")
+end
         IsMobile = CheckMobile()
         Size11,Size22 = 600,460
         if IsMobile then 

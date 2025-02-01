@@ -1,5 +1,4 @@
 
-
         local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
         repeat
             task.wait()
@@ -134,7 +133,58 @@
                 end
             )
         until game.Players.LocalPlayer.Team ~= nil
-        --Ui
+        --- Creating Ui ---
+        
+        local Icons = {}
+        local Success, Response =
+            pcall(
+            function()
+                Icons =
+                    HttpService:JSONDecode(
+                    game:HttpGetAsync(
+                        "https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json"
+                    )
+                ).icons
+            end
+        )
+        local MMBStatus = ""
+        if not Success then
+            game.Players.LocalPlayer:Kick("Can not get icons....")
+        end  
+        local CheckMobile = function()
+            if
+                game:GetService("UserInputService").TouchEnabled
+             then
+                return true 
+            end
+        end 
+        IsMobile = CheckMobile()
+        Size11,Size22 = 600,460
+        if IsMobile then 
+            Size11,Size22 = 500,290
+            local ClickButton = Instance.new("ScreenGui")
+            local MainFrame = Instance.new("Frame")
+            local ImageLabel = Instance.new("ImageLabel")
+            local TextButton = Instance.new("TextButton") 
+            local UICorner = Instance.new("UICorner") 
+            local UICorner_2 = Instance.new("UICorner")
+            if game.CoreGui:FindFirstChild("ClickButton") then 
+                game.CoreGui:FindFirstChild("ClickButton"):Destroy()
+            end
+            ClickButton.Name = "ClickButton"
+            ClickButton.Parent = game.CoreGui
+            ClickButton.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            
+            MainFrame.Name = "MainFrame"
+            MainFrame.Parent = ClickButton
+            MainFrame.Active = true
+            MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+            MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+            MainFrame.BorderColor3 = Color3.new(0, 0, 0)
+            MainFrame.BorderSizePixel = 0
+            MainFrame.Transparency = 1
+            MainFrame.Position = UDim2.new(0.187441245, 0, 0.476932675, 0)
+            MainFrame.Size = UDim2.new(0, 45, 0, 45)
             
             UICorner.CornerRadius = UDim.new(0, 100)
             UICorner.Parent = MainFrame
@@ -172,7 +222,7 @@
             Fluent:CreateWindow(
             {
                 Title = "Tsuo Hub Update 20",
-                SubTitle = "Dev By VMH09",
+                SubTitle = "Skid",
                 TabWidth = 160,
                 Size = UDim2.fromOffset(Size11, Size22),
                 Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
@@ -186,7 +236,7 @@
             domain = newmm
             function newmm:NewParagraph(cf)
                 local paragraphnew
-                newTitle = cf.Title or "Tsuo Hub"
+                newTitle = cf.Title or "Xemo Hub"
                 newContent = cf.Content or "MMB"
                 paragraphnew =
                     domain:AddParagraph(
@@ -196,7 +246,7 @@
                     }
                 )
                 function paragraphnew:Set(cf2)
-                    newTitle = cf2.Title or "Tsuo Hub"
+                    newTitle = cf2.Title or "Xemo Hub"
                     newContent = cf2.Content or "MMB"
                     paragraphnew:SetTitle(newTitle)
                     paragraphnew:SetDesc(newContent)
@@ -400,12 +450,10 @@
         WeaponTab = Window:NewTab({Title = "Weapon", Icon = getRandomIcon()}) 
         ShopTab = Window:NewTab({Title = "Shop",Icon = getRandomIcon()})
         RaidTab = Window:NewTab({Title = "Fruits & Raid", Icon = getRandomIcon()})
-        if not Sea1 then 
-            SeaBeastTab = Window:NewTab({Title = "Sea Beast",Icon = getRandomIcon()})
-        end 
+         SeaBeastTab = Window:NewTab({Title = "Sea Beast",Icon = getRandomIcon()})
         SettingTab = Window:NewTab({Title = "Setting",Icon = getRandomIcon()})
         function CreateUiNotify(cf)
-            newtitle = cf.Title or "Tsuo Hub"
+            newtitle = cf.Title or "Xemo Hub"
             newcontent = cf.Content or "Nothing"
             newduration = cf.Duration or 10
             newsubcontent = cf.SubContent or ""
@@ -8865,7 +8913,7 @@
         Window:SelectTab(1)
         Fluent:Notify(
             {
-                Title = "Xemo Skid Hub",
+                Title = "Xemo Hub",
                 Content = "The script has been loaded successful.",
                 Duration = 15
             }

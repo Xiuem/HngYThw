@@ -1164,7 +1164,7 @@ function RedeemCode(value)
         end
     })
    
-   local shoppinglist = {'           ','electro','fishman karate','dragon claw','superhuman','deathstep','dragontalon','sharkman karate','electric claw','godhuman','sanguine art'}
+   local shoppinglist = {'electro','fishman karate','dragon claw','superhuman','deathstep','dragontalon','sharkman karate','electric claw','godhuman','sanguine art','          '}
 
     local shopaholic = Tabs.O:AddDropdown("shopaholic", {
         Title = "Select Melee",
@@ -1215,7 +1215,7 @@ function RedeemCode(value)
 	end
 end)
 
-   local shoppinglist = {'           ','geppo','buso','soru','ken'}
+   local shoppinglist = {'geppo','buso','soru','ken','         '}
 
     local shopaholic = Tabs.O:AddDropdown("shopaholic", {
         Title = "Select Abilities",

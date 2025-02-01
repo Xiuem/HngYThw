@@ -134,35 +134,7 @@
                 end
             )
         until game.Players.LocalPlayer.Team ~= nil
-        --- Creating Ui ---
-
-        IsMobile = CheckMobile()
-        Size11,Size22 = 600,460
-        if IsMobile then 
-            Size11,Size22 = 500,290
-            local ClickButton = Instance.new("ScreenGui")
-            local MainFrame = Instance.new("Frame")
-            local ImageLabel = Instance.new("ImageLabel")
-            local TextButton = Instance.new("TextButton") 
-            local UICorner = Instance.new("UICorner") 
-            local UICorner_2 = Instance.new("UICorner")
-            if game.CoreGui:FindFirstChild("ClickButton") then 
-                game.CoreGui:FindFirstChild("ClickButton"):Destroy()
-            end
-            ClickButton.Name = "ClickButton"
-            ClickButton.Parent = game.CoreGui
-            ClickButton.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-            
-            MainFrame.Name = "MainFrame"
-            MainFrame.Parent = ClickButton
-            MainFrame.Active = true
-            MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-            MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
-            MainFrame.BorderColor3 = Color3.new(0, 0, 0)
-            MainFrame.BorderSizePixel = 0
-            MainFrame.Transparency = 1
-            MainFrame.Position = UDim2.new(0.187441245, 0, 0.476932675, 0)
-            MainFrame.Size = UDim2.new(0, 45, 0, 45)
+        --Ui
             
             UICorner.CornerRadius = UDim.new(0, 100)
             UICorner.Parent = MainFrame

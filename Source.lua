@@ -149,8 +149,13 @@
         )
         local MMBStatus = ""
         if not Success then
-            game.Players.LocalPlayer:Kick("Can not get icons....")
-        end  
+            Fluent:Notify(
+            {
+                Title = "Xemo Hub",
+                Content = "Icon Not Load",
+                Duration = 15
+            }
+        )
         local CheckMobile = function()
             if
                 game:GetService("UserInputService").TouchEnabled
@@ -221,7 +226,7 @@
         local Window =
             Fluent:CreateWindow(
             {
-                Title = "Tsuo Hub Update 20",
+                Title = "Xemo Hub Update",
                 SubTitle = "Skid",
                 TabWidth = 160,
                 Size = UDim2.fromOffset(Size11, Size22),
@@ -428,30 +433,16 @@
             end
             return newmm
         end
-        function getRandomIcon()
-            idicon = math.random(1, 555)
-            idcount = 0
-            for i, v in pairs(Icons) do
-                if v then
-                    if idcount == idicon then
-                        return v
-                    else
-                        idcount = idcount + 1
-                    end
-                end
-            end
-            return ""
-        end
-        DefaultTab = Window:NewTab({Title = "Default", Icon = getRandomIcon()})
-        FarmTab = Window:NewTab({Title = "Farm", Icon = getRandomIcon()}) 
-        ServerTab = Window:NewTab({Title = "Server & Info", Icon = getRandomIcon()})
-        V4Tab = Window:NewTab({Title = "Race", Icon = getRandomIcon()})
-        PlRTAB = Window:NewTab({Title = "Local Player", Icon = getRandomIcon()}) 
-        WeaponTab = Window:NewTab({Title = "Weapon", Icon = getRandomIcon()}) 
-        ShopTab = Window:NewTab({Title = "Shop",Icon = getRandomIcon()})
-        RaidTab = Window:NewTab({Title = "Fruits & Raid", Icon = getRandomIcon()})
-         SeaBeastTab = Window:NewTab({Title = "Sea Beast",Icon = getRandomIcon()})
-        SettingTab = Window:NewTab({Title = "Setting",Icon = getRandomIcon()})
+        DefaultTab = Window:NewTab({Title = "Default", Icon = "" }),
+        FarmTab = Window:NewTab({Title = "Farm", Icon = "" }),
+        ServerTab = Window:NewTab({Title = "Server & Info", Icon = "" }),
+        V4Tab = Window:NewTab({Title = "Race", Icon = "" }),
+        PlRTAB = Window:NewTab({Title = "Local Player", Icon = "" }),
+        WeaponTab = Window:NewTab({Title = "Weapon", Icon = "" }),
+        ShopTab = Window:NewTab({Title = "Shop",Icon = "" }),
+        RaidTab = Window:NewTab({Title = "Fruits & Raid", Icon = "" }),
+         SeaBeastTab = Window:NewTab({Title = "Sea Beast",Icon = "" }),
+        SettingTab = Window:NewTab({Title = "Setting",Icon = "" }),
         function CreateUiNotify(cf)
             newtitle = cf.Title or "Xemo Hub"
             newcontent = cf.Content or "Nothing"

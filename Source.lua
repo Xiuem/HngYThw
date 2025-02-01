@@ -142,7 +142,7 @@
                 Icons =
                     HttpService:JSONDecode(
                     game:HttpGetAsync(
-                        "https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json"
+                        "https://raw.githubusercontent.com/dawid-scripts/Fluent/refs/heads/master/src/Icons.lua"
                     )
                 ).icons
             end

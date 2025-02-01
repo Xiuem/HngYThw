@@ -10,7 +10,7 @@
         end
         --- Hub Values ---
         Hub = {}
-        Hub.Name = "Tsuo Hub"
+        Hub.Name = "Xemo Hub"
         Hub.Game = "Blox Fruits"
         ---- Settings -----
         HttpService = game:GetService("HttpService")
@@ -149,9 +149,7 @@
             end
         )
         local MMBStatus = ""
-        if not Success then
-            game.Players.LocalPlayer:Kick("Can not get icons....")
-        end  
+        if not Success then  
         local CheckMobile = function()
             if
                 game:GetService("UserInputService").TouchEnabled

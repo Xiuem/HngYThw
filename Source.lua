@@ -135,6 +135,26 @@
         until game.Players.LocalPlayer.Team ~= nil
         --- Creating Ui ---
         
+        local Icons = {}
+        local Success, Response =
+            pcall(
+            function()
+                Icons =
+                    HttpService:JSONDecode(
+                    game:HttpGetAsync(
+                        "https://raw.githubusercontent.com/dawid-scripts/Fluent/refs/heads/master/src/Icons.lua"
+                    )
+                ).icons
+            end
+        )
+        local MMBStatus = ""
+        local CheckMobile = function()
+            if
+                game:GetService("UserInputService").TouchEnabled
+             then
+                return true 
+            end
+        end 
         IsMobile = CheckMobile()
         Size11,Size22 = 600,460
         if IsMobile then 
